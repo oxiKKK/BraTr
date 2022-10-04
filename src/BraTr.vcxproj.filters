@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{b9df7aad-f430-49a3-82ec-e6401eac4887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Management">
+      <UniqueIdentifier>{7036b61a-3ff0-426b-a5a0-b1c715e82123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Management\Translation">
+      <UniqueIdentifier>{953c2fd5-fd7b-40eb-9b5f-0b6002910de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{37270759-b6fe-4fc7-98b8-0df7a6fe0eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\imgui">
+      <UniqueIdentifier>{263bc5ac-f9d8-4966-8941-657b16f02a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\imgui\backends">
+      <UniqueIdentifier>{93c83c24-e4a0-4bf1-908d-0d54c8a770a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\portable-file-dialogs">
+      <UniqueIdentifier>{0717a0df-ef40-489c-9fc9-ad0b6b5b4330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{137fd4a0-eb7f-4deb-9587-4f340ccf2447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\soil">
+      <UniqueIdentifier>{0c7fafbd-f706-401e-b9f4-d51eb8f92c00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Braille">
+      <UniqueIdentifier>{05c9c343-e6c6-49bb-abfb-938bcd8b9e99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GUI">
+      <UniqueIdentifier>{0a213e5b-515c-4d93-84cf-6aaa873a6cc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Assets">
+      <UniqueIdentifier>{1c81a5d3-cea0-4294-8e57-291abe29b725}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="CApplication.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="CConsole.cpp">
+      <Filter>src\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="CTranslation.cpp">
+      <Filter>src\Management\Translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>external\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl2.cpp">
+      <Filter>external\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_demo.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_draw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_tables.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_widgets.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="CSettings.cpp">
+      <Filter>src\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="CUtils.cpp">
+      <Filter>src\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\soil\src\image_dxt.c">
+      <Filter>external\soil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\soil\src\image_helper.c">
+      <Filter>external\soil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\soil\src\soil.c">
+      <Filter>external\soil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\soil\src\stb_image_aug.c">
+      <Filter>external\soil</Filter>
+    </ClCompile>
+    <ClCompile Include="bratr_pch.cpp" />
+    <ClCompile Include="CBrailleParser.cpp">
+      <Filter>src\Braille</Filter>
+    </ClCompile>
+    <ClCompile Include="CGUI.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CGUIFontManager.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileSystem.cpp">
+      <Filter>src\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="BrailleCharacterAtlas.cpp">
+      <Filter>src\Braille</Filter>
+    </ClCompile>
+    <ClCompile Include="CBrailleRenderer.cpp">
+      <Filter>src\Braille</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventListener.cpp">
+      <Filter>src\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="CDialogManager.cpp">
+      <Filter>src\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="assets\arial_binary_compressed.cpp">
+      <Filter>src\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="assets\ico_png_file_binary_data.cpp">
+      <Filter>src\Assets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CApplication.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="CConsole.h">
+      <Filter>src\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="CTranslation.h">
+      <Filter>src\Management\Translation</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationStrings.h">
+      <Filter>src\Management\Translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_glfw.h">
+      <Filter>external\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl2.h">
+      <Filter>external\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui_internal.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_rectpack.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_textedit.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_truetype.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="CSettings.h">
+      <Filter>src\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="CUtils.h">
+      <Filter>src\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\portable-file-dialogs\portable-file-dialogs.h">
+      <Filter>external\portable-file-dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\assets\resource.h">
+      <Filter>assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\soil\include\SOIL\image_dxt.h">
+      <Filter>external\soil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\soil\include\SOIL\image_helper.h">
+      <Filter>external\soil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\soil\include\SOIL\SOIL.h">
+      <Filter>external\soil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\soil\include\SOIL\stb_image_aug.h">
+      <Filter>external\soil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\soil\include\SOIL\stbi_dds_aug.h">
+      <Filter>external\soil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\soil\include\SOIL\stbi_dds_aug_c.h">
+      <Filter>external\soil</Filter>
+    </ClInclude>
+    <ClInclude Include="bratr_pch.h" />
+    <ClInclude Include="CBrailleParser.h">
+      <Filter>src\Braille</Filter>
+    </ClInclude>
+    <ClInclude Include="CGUI.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CGUIFontManager.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileSystem.h">
+      <Filter>src\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="BrailleCharacterAtlas.h">
+      <Filter>src\Braille</Filter>
+    </ClInclude>
+    <ClInclude Include="CBrailleRenderer.h">
+      <Filter>src\Braille</Filter>
+    </ClInclude>
+    <ClInclude Include="CEventListener.h">
+      <Filter>src\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="CDialogManager.h">
+      <Filter>src\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Versioning.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\assets\BraTr.aps">
+      <Filter>assets</Filter>
+    </None>
+    <None Include="..\assets\bratr_ico64.psd">
+      <Filter>assets</Filter>
+    </None>
+    <None Include="..\assets\bratr_ico128.psd">
+      <Filter>assets</Filter>
+    </None>
+    <None Include="..\assets\bratr_ico256.psd">
+      <Filter>assets</Filter>
+    </None>
+    <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\assets\BraTr.rc">
+      <Filter>assets</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\assets\bratr_ico64.ico">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="..\assets\bratr_ico128.ico">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="..\assets\bratr_ico256.ico">
+      <Filter>assets</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
