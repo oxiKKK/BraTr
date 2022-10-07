@@ -65,14 +65,6 @@ bool CGUI::startup(GLFWwindow* window)
 
 	CEventListener::get().register_listener();
 
-	if (CSettings::get().m_open_same_input_file)
-	{
-		m_input_filepath = CSettings::get().m_input_file;
-
-		if (m_input_filepath.empty() || !std::filesystem::exists(m_input_filepath))
-			CDialogManager::get().display_error(CTranslation::Get<TRED_ERR_PREVIOUS_INPUT_FILE_NOT_FOUND>());
-	}
-
 	CConsole::get().output_message("Initialized GUI");
 
 	return true;
@@ -99,10 +91,6 @@ void CGUI::run_frame(uint32_t app_width, uint32_t app_height)
 	CGUIFontManager::get().update_active_font();
 
 	CEventListener::get().listen();
-
-	// Can't open same input file next time when there's isn't any
-	if (m_input_filepath.empty())
-		CSettings::get().m_open_same_input_file = false;
 
 	render_contents();
 
@@ -211,10 +199,6 @@ void CGUI::render_menu_bar()
 	if (ImGui::BeginMenu(CTranslation::Get<TRED_GUI_PREFERENCES>()))
 	{
 		ImGui::MenuItem(CTranslation::Get<TRED_GUI_HIDE_LEFT_SIDE>(), nullptr, &CSettings::get().m_hide_left_side);
-		if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_SHOW_INPUT_FILE_NEXT_TIME>(), nullptr, &CSettings::get().m_open_same_input_file, !m_input_filepath.empty()))
-		{
-			CSettings::get().m_input_file = m_input_filepath.string();
-		}
 		ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_HOVER_TOOLTIP>(), nullptr, &CSettings::get().m_render_hover_unciode_offset_tooltip);
 
 		ImGui::Separator();

@@ -55,8 +55,6 @@ void CSettings::load_settings()
 	m_render_small_greek_letters_prefix = read_value(k_settings_section_name, "render_small_greek_letters_prefix");
 	m_render_capital_greek_letters_prefix = read_value(k_settings_section_name, "render_capital_greek_letters_prefix");
 	m_render_hover_unciode_offset_tooltip = read_value(k_settings_section_name, "render_hover_unciode_offset_tooltip");
-	m_open_same_input_file = read_value(k_settings_section_name, "open_same_input_file");
-	m_input_file = read_string(k_settings_section_name, "input_file");
 	m_font_size = static_cast<ESettingsFont>(read_value(k_settings_section_name, "font_size"));
 	m_language = static_cast<ELanguage>(read_value(k_settings_section_name, "language"));
 
@@ -103,8 +101,6 @@ void CSettings::write_settings()
 	write_value(ofs, "render_small_greek_letters_prefix", m_render_small_greek_letters_prefix);
 	write_value(ofs, "render_capital_greek_letters_prefix", m_render_capital_greek_letters_prefix);
 	write_value(ofs, "render_hover_unciode_offset_tooltip", m_render_hover_unciode_offset_tooltip);
-	write_value(ofs, "open_same_input_file", m_open_same_input_file);
-	write_string(ofs, "input_file", m_input_file);
 	write_value(ofs, "font_size", m_font_size);
 	write_value(ofs, "language", m_language);
 

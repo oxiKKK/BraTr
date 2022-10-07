@@ -44,7 +44,6 @@ std::array<translation_t, TRED_COUNT> CTranslation::m_translated_quotes =
 		{ TRED_ERR_COULDNT_CREATE_DIR, "Couldn't create directory", u8"Nepodařilo se vytvořit podsložku" },
 		{ TRED_ERR_COULDNT_READ_FILE, "Couldn't read file contents", u8"Nepodařilo se číst ze souboru" },
 		{ TRED_ERR_CHARACTER_WITHOUT_TRANSLATION, "This character doesn't have translation support", u8"Toto písmeno ještě nemá podporovaný překlad v braillově písmu" },
-		{ TRED_ERR_PREVIOUS_INPUT_FILE_NOT_FOUND, "Couldn't locate previously saved file. Please, open new file.", u8"Nepodařilo se najít napoředy uložený soubor. Prosím, otevřete nový." },
 		{ TRED_ERR_COULDNT_OPEN_FILE, "Couldn't open file", u8"Nepodařilo se otevřít soubor" },
 		{ TRED_ERR_DESKTOP_RESOLUTION, "Couldn't get desktop resolution", u8"Nepodařilo se zíkat rozlišení plochy" },
 
@@ -65,7 +64,6 @@ std::array<translation_t, TRED_COUNT> CTranslation::m_translated_quotes =
 
 		{ TRED_GUI_HIDE_LEFT_SIDE, "Hide left side", u8"Schovat levou stranu" },
 		{ TRED_GUI_RENDER_HOVER_TOOLTIP, "Render character code", u8"Zobrazovat kód znaku" },
-		{ TRED_GUI_SHOW_INPUT_FILE_NEXT_TIME, "Remember this file", u8"Zapamatovat soubor" },
 
 		{ TRED_GUI_FONT_SIZE, "Font size", u8"Velikost písma" },
 		{ TRED_GUI_FONT_SIZE_SMALL, "Small", u8"Malé" },

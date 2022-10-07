@@ -72,9 +72,6 @@ public:
 
 	bool m_render_hover_unciode_offset_tooltip = false;
 
-	bool m_open_same_input_file = false;
-	std::string m_input_file; // Empty when the setting is off.
-
 	ESettingsFont m_font_size = SETTINGS_FONT_BIG;
 
 	ELanguage m_language = LANGUAGE_CZECH;

@@ -2,6 +2,9 @@
 ## Source code
 - 
 
+## App
+- Got rid of the option to open previously opened file.
+
 # v0.1.1
 ## Source code
 - Added missing glfw.lib file.
