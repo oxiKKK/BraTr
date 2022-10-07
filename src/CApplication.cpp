@@ -69,11 +69,11 @@ bool CApplication::invoke_window()
 {
 	if (!glfwInit())
 	{
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_GLFW_INIT>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_GLFW_INIT>());
 		return false;
 	}
 
-	m_app_title = std::format("BraTr -- {}", CTranslation::Get<TRED_TITLE>());
+	m_app_title = std::format("BraTr -- {}", CTranslation::get<TRED_TITLE>());
 	m_app_width = 860;
 	m_app_height = 720;
 
@@ -84,7 +84,7 @@ bool CApplication::invoke_window()
 
 	if (!m_glfw_window)
 	{
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_GLFW_CREATE_WINDOW>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_GLFW_CREATE_WINDOW>());
 		return false;
 	}
 
@@ -135,9 +135,9 @@ bool CApplication::on_frame()
 	CGUI::get().run_frame(m_app_width, m_app_height);
 
 	if (CGUI::get().get_input_file().empty())
-		change_window_title(std::format("BraTr -- {}", CTranslation::Get<TRED_TITLE>()));
+		change_window_title(std::format("BraTr -- {}", CTranslation::get<TRED_TITLE>()));
 	else
-		change_window_title(std::format("BraTr -- {} | {}", CTranslation::Get<TRED_TITLE>(), CGUI::get().get_input_file().filename().string()));
+		change_window_title(std::format("BraTr -- {} | {}", CTranslation::get<TRED_TITLE>(), CGUI::get().get_input_file().filename().string()));
 
 	glfwMakeContextCurrent(m_glfw_window);
 	glfwSwapBuffers(m_glfw_window);

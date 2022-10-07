@@ -34,7 +34,7 @@ BOOL WINAPI WinMain(
 )
 {
 	if (!CApplication::get().run())
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_APP_FAIL>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_APP_FAIL>());
 
 	return TRUE;
 }

@@ -33,7 +33,7 @@ void CPlatform::get_desktop_resolution(int32_t& width, int32_t& height)
 	if (!::GetWindowRect(::GetDesktopWindow(), &desktop))
 	{
 		CDialogManager::get().display_fatal_error(std::format("{} (error {})", 
-															  CTranslation::Get<TRED_ERR_DESKTOP_RESOLUTION>(), 
+															  CTranslation::get<TRED_ERR_DESKTOP_RESOLUTION>(), 
 															  ::GetLastError()));
 		return;
 	}

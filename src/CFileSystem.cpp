@@ -80,7 +80,7 @@ void CFileSystem::validate_dirs()
 
 		// Try to create the directory
 		if (!std::filesystem::create_directory(Dir))
-			CDialogManager::get().display_fatal_error(std::format("{} ({})", CTranslation::Get<TRED_ERR_COULDNT_CREATE_DIR>(), Dir.string().c_str()));
+			CDialogManager::get().display_fatal_error(std::format("{} ({})", CTranslation::get<TRED_ERR_COULDNT_CREATE_DIR>(), Dir.string().c_str()));
 
 		CConsole::get().output_message(std::format("Creating directory {}", Dir.string().c_str()));
 	}

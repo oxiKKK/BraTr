@@ -79,7 +79,7 @@ ImFont* CGUIFontManager::try_to_precache(ImGuiIO& io, const void* compressed_ttf
 	// Font most likely not found
 	if (!p_font)
 	{
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_FONT_NOT_FOUND>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_FONT_NOT_FOUND>());
 		return nullptr;
 	}
 

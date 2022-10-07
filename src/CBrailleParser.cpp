@@ -74,7 +74,7 @@ bool CBrailleParser::read_file_contents(const std::filesystem::path& filepath)
 
 	if (!wifs.good())
 	{
-		CDialogManager::get().display_fatal_error(std::format("{} ({})", CTranslation::Get<TRED_ERR_COULDNT_READ_FILE>(), filepath.string()));
+		CDialogManager::get().display_fatal_error(std::format("{} ({})", CTranslation::get<TRED_ERR_COULDNT_READ_FILE>(), filepath.string()));
 		return false;
 	}
 

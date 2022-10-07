@@ -31,7 +31,7 @@ bool CGUI::startup(GLFWwindow* window)
 	// Setup Dear ImGui context
 	if (!ImGui::CreateContext())
 	{
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_IMGUI_CONTEXT>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_IMGUI_CONTEXT>());
 		return false;
 	}
 
@@ -53,13 +53,13 @@ bool CGUI::startup(GLFWwindow* window)
 	// Setup Platform/Renderer backends
 	if (!ImGui_ImplGlfw_InitForOpenGL(window, true))
 	{
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_IMGUI_GLFW>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_IMGUI_GLFW>());
 		return false;
 	}
 
 	if (!ImGui_ImplOpenGL2_Init())
 	{
-		CDialogManager::get().display_fatal_error(CTranslation::Get<TRED_ERR_IMGUI_OPGL2>());
+		CDialogManager::get().display_fatal_error(CTranslation::get<TRED_ERR_IMGUI_OPGL2>());
 		return false;
 	}
 
@@ -156,9 +156,9 @@ void CGUI::render_menu_bar_decorations()
 
 void CGUI::render_menu_bar()
 {
-	if (ImGui::BeginMenu(CTranslation::Get<TRED_GUI_FILE>()))
+	if (ImGui::BeginMenu(CTranslation::get<TRED_GUI_FILE>()))
 	{
-		if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_OPEN>()))
+		if (ImGui::MenuItem(CTranslation::get<TRED_GUI_OPEN>()))
 		{
 			auto Sel = pfd::open_file::open_file(
 				"Select a text file", ".",
@@ -170,7 +170,7 @@ void CGUI::render_menu_bar()
 
 		ImGui::BeginDisabled(m_input_filepath.empty());
 
-		if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_CLOSE>()))
+		if (ImGui::MenuItem(CTranslation::get<TRED_GUI_CLOSE>()))
 		{
 			m_input_filepath = "";
 		}
@@ -196,29 +196,29 @@ void CGUI::render_menu_bar()
 		ImGui::EndMenu();
 	}
 
-	if (ImGui::BeginMenu(CTranslation::Get<TRED_GUI_PREFERENCES>()))
+	if (ImGui::BeginMenu(CTranslation::get<TRED_GUI_PREFERENCES>()))
 	{
-		ImGui::MenuItem(CTranslation::Get<TRED_GUI_HIDE_LEFT_SIDE>(), nullptr, &CSettings::get().m_hide_left_side);
-		ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_HOVER_TOOLTIP>(), nullptr, &CSettings::get().m_render_hover_unciode_offset_tooltip);
+		ImGui::MenuItem(CTranslation::get<TRED_GUI_HIDE_LEFT_SIDE>(), nullptr, &CSettings::get().m_hide_left_side);
+		ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_HOVER_TOOLTIP>(), nullptr, &CSettings::get().m_render_hover_unciode_offset_tooltip);
 
 		ImGui::Separator();
 
-		if (ImGui::BeginMenu(CTranslation::Get<TRED_GUI_LANGUAGE>()))
+		if (ImGui::BeginMenu(CTranslation::get<TRED_GUI_LANGUAGE>()))
 		{
 			static bool selected_1 = false, selected_2 = false;
 
 			selected_1 = CSettings::get().m_language == LANGUAGE_ENGLISH;
 			selected_2 = CSettings::get().m_language == LANGUAGE_CZECH;
 
-			if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_LANGUAGE_ENGLISH>(), nullptr, &selected_1))
+			if (ImGui::MenuItem(CTranslation::get<TRED_GUI_LANGUAGE_ENGLISH>(), nullptr, &selected_1))
 				CSettings::get().m_language = LANGUAGE_ENGLISH;
-			else if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_LANGUAGE_CZECH>(), nullptr, selected_2))
+			else if (ImGui::MenuItem(CTranslation::get<TRED_GUI_LANGUAGE_CZECH>(), nullptr, selected_2))
 				CSettings::get().m_language = LANGUAGE_CZECH;
 
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu(CTranslation::Get<TRED_GUI_FONT_SIZE>()))
+		if (ImGui::BeginMenu(CTranslation::get<TRED_GUI_FONT_SIZE>()))
 		{
 			static bool selected_1 = false, selected_2 = false, selected_3 = false;
 
@@ -226,30 +226,30 @@ void CGUI::render_menu_bar()
 			selected_2 = CSettings::get().m_font_size == SETTINGS_FONT_MEDIUM;
 			selected_3 = CSettings::get().m_font_size == SETTINGS_FONT_BIG;
 
-			if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_FONT_SIZE_SMALL>(), nullptr, &selected_1))
+			if (ImGui::MenuItem(CTranslation::get<TRED_GUI_FONT_SIZE_SMALL>(), nullptr, &selected_1))
 				CSettings::get().m_font_size = SETTINGS_FONT_SMALL;
-			else if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_FONT_SIZE_MEDIUM>(), nullptr, selected_2))
+			else if (ImGui::MenuItem(CTranslation::get<TRED_GUI_FONT_SIZE_MEDIUM>(), nullptr, selected_2))
 				CSettings::get().m_font_size = SETTINGS_FONT_MEDIUM;
-			else if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_FONT_SIZE_BIG>(), nullptr, selected_3))
+			else if (ImGui::MenuItem(CTranslation::get<TRED_GUI_FONT_SIZE_BIG>(), nullptr, selected_3))
 				CSettings::get().m_font_size = SETTINGS_FONT_BIG;
 
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu(CTranslation::Get<TRED_GUI_SPECIAL_PREFIXES>()))
+		if (ImGui::BeginMenu(CTranslation::get<TRED_GUI_SPECIAL_PREFIXES>()))
 		{
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_SPECIAL_PREFIXES>(), nullptr, &CSettings::get().m_render_prefixes, true);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_SPECIAL_PREFIXES>(), nullptr, &CSettings::get().m_render_prefixes, true);
 
 			ImGui::Separator();
 
 			bool are_prefixes_eanbled = CSettings::get().m_render_prefixes;
 
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_NUMBERS_PREFIX>(), nullptr, &CSettings::get().m_render_number_prefix, are_prefixes_eanbled);
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_SMALL_LETTER_PREFIX>(), nullptr, &CSettings::get().m_render_small_letter_prefix, are_prefixes_eanbled);
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_CAPITAL_LETTERS_PREFIX>(), nullptr, &CSettings::get().m_render_capital_letters_prefix, are_prefixes_eanbled);
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_CAPITAL_LETTERS_GROUP_PREFIX>(), nullptr, &CSettings::get().m_render_capital_letter_groups_prefix, are_prefixes_eanbled);
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_SMALL_GREEK_LETTER_PREFIX>(), nullptr, &CSettings::get().m_render_small_greek_letters_prefix, are_prefixes_eanbled);
-			ImGui::MenuItem(CTranslation::Get<TRED_GUI_RENDER_CAPITAL_GREEK_LETTER_PREFIX>(), nullptr, &CSettings::get().m_render_capital_greek_letters_prefix, are_prefixes_eanbled);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_NUMBERS_PREFIX>(), nullptr, &CSettings::get().m_render_number_prefix, are_prefixes_eanbled);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_SMALL_LETTER_PREFIX>(), nullptr, &CSettings::get().m_render_small_letter_prefix, are_prefixes_eanbled);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_CAPITAL_LETTERS_PREFIX>(), nullptr, &CSettings::get().m_render_capital_letters_prefix, are_prefixes_eanbled);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_CAPITAL_LETTERS_GROUP_PREFIX>(), nullptr, &CSettings::get().m_render_capital_letter_groups_prefix, are_prefixes_eanbled);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_SMALL_GREEK_LETTER_PREFIX>(), nullptr, &CSettings::get().m_render_small_greek_letters_prefix, are_prefixes_eanbled);
+			ImGui::MenuItem(CTranslation::get<TRED_GUI_RENDER_CAPITAL_GREEK_LETTER_PREFIX>(), nullptr, &CSettings::get().m_render_capital_greek_letters_prefix, are_prefixes_eanbled);
 
 			ImGui::EndMenu();
 		}
@@ -257,19 +257,19 @@ void CGUI::render_menu_bar()
 		ImGui::EndMenu();
 	}
 
-	if (ImGui::MenuItem(CTranslation::Get<TRED_GUI_ABOUT>()))
+	if (ImGui::MenuItem(CTranslation::get<TRED_GUI_ABOUT>()))
 	{
-		ImGui::OpenPopup(CTranslation::Get<TRED_GUI_ABOUT>());
+		ImGui::OpenPopup(CTranslation::get<TRED_GUI_ABOUT>());
 	}
 
 	// Always center this window when appearing
 	ImVec2 center = ImGui::GetMainViewport()->GetCenter();
 	ImGui::SetNextWindowPos(center, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
 
-	if (ImGui::BeginPopupModal(CTranslation::Get<TRED_GUI_ABOUT>(), NULL, ImGuiWindowFlags_AlwaysAutoResize))
+	if (ImGui::BeginPopupModal(CTranslation::get<TRED_GUI_ABOUT>(), NULL, ImGuiWindowFlags_AlwaysAutoResize))
 	{
-		ImGui::Text("%s v%s", CTranslation::Get<TRED_TITLE>(), BRATR_VERSION);
-		ImGui::Text("%s %s %s (%s build)", CTranslation::Get<TRED_GUI_ABOUT_COMPILED_AT>(), __DATE__, __TIME__, BUILD_MODE_STR);
+		ImGui::Text("%s v%s", CTranslation::get<TRED_TITLE>(), BRATR_VERSION);
+		ImGui::Text("%s %s %s (%s build)", CTranslation::get<TRED_GUI_ABOUT_COMPILED_AT>(), __DATE__, __TIME__, BUILD_MODE_STR);
 		ImGui::Separator();
 
 		if (ImGui::Button("OK", ImVec2(120, 0)))
@@ -355,7 +355,7 @@ void CGUI::try_to_open_input_file(const std::filesystem::path& filepath)
 	// Found the file
 	if (filepath.empty())
 	{
-		CDialogManager::get().display_error(std::format("{} ({})", CTranslation::Get<TRED_ERR_COULDNT_OPEN_FILE>(), filepath.string()));
+		CDialogManager::get().display_error(std::format("{} ({})", CTranslation::get<TRED_ERR_COULDNT_OPEN_FILE>(), filepath.string()));
 
 		return;
 	}

@@ -29,21 +29,21 @@
 
 void CDialogManager::display_error(const std::string& text)
 {
-	display_generic(text, CTranslation::Get<TRED_MSG_ERROR>(), MB_OK | MB_ICONERROR | MB_DEFBUTTON1);
+	display_generic(text, CTranslation::get<TRED_MSG_ERROR>(), MB_OK | MB_ICONERROR | MB_DEFBUTTON1);
 	CConsole::get().output_error(text);
 	__debugbreak();
 }
 
 void CDialogManager::display_fatal_error(const std::string& text)
 {
-	display_generic(text, CTranslation::Get<TRED_MSG_ERROR>(), MB_OK | MB_ICONERROR | MB_DEFBUTTON1);
+	display_generic(text, CTranslation::get<TRED_MSG_ERROR>(), MB_OK | MB_ICONERROR | MB_DEFBUTTON1);
 	__debugbreak();
 	ExitProcess(1);
 }
 
 void CDialogManager::display_info(const std::string& text)
 {
-	display_generic(text, CTranslation::Get<TRED_MSG_INFO>(), MB_OK | MB_ICONINFORMATION | MB_DEFBUTTON1);
+	display_generic(text, CTranslation::get<TRED_MSG_INFO>(), MB_OK | MB_ICONINFORMATION | MB_DEFBUTTON1);
 	CConsole::get().output_info(text);
 }
 
