@@ -361,7 +361,7 @@ void CBrailleRenderer::render_invalid_char_marker(const ImVec2& char_pos)
 			char_pos.y + get_letter_size() / 2.f - label_sz.y / 2.f,
 		},
 		disabled_clr,
-		CGUIFontManager::get().get_font("Small"),
+		CGUIFontManager::get().get_font("Default"),
 		text);
 }
 

@@ -4,6 +4,7 @@
 
 ## App
 - Got rid of the option to open previously opened file.
+- Fixed a bug where the invalid character marker wasn't rendering correctly.
 
 # v0.1.1
 ## Source code

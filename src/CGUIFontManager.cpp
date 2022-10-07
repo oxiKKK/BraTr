@@ -35,9 +35,8 @@ const ImWchar GlyphContainer::s_czech[] =
 
 bool CGUIFontManager::precache_fonts(ImGuiIO& io)
 {
-	// Default text size
-	try_to_precache(io, arial_font_compressed_data, arial_font_compressed_size, 15.f, GlyphContainer::s_czech);
-
+	// The first font precached is the font used by imgui by default
+	m_precached_fonts["Default"] = try_to_precache(io, arial_font_compressed_data, arial_font_compressed_size, 15.f, GlyphContainer::s_czech);
 	m_precached_fonts["Small"] = try_to_precache(io, arial_font_compressed_data, arial_font_compressed_size, 20.f, GlyphContainer::s_czech);
 	m_precached_fonts["Medium"] = try_to_precache(io, arial_font_compressed_data, arial_font_compressed_size, 25.f, GlyphContainer::s_czech);
 	m_precached_fonts["Big"] = try_to_precache(io, arial_font_compressed_data, arial_font_compressed_size, 35.f, GlyphContainer::s_czech);
