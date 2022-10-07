@@ -117,13 +117,18 @@ void CBrailleRenderer::render_characters(bool regular_characters)
 	auto& style = ImGui::GetStyle();
 	const auto window_pad = style.WindowPadding;
 
+	// Apply scrollbar size however, only if it's present.
+	float scrollbar_size_x = style.ScrollbarSize;
+	if (m_max_avail_content_scroll_y < window_size.y)
+		scrollbar_size_x = 0.f;
+
 	ImVec2 cursor_pos = { ImGui::GetCursorScreenPos().x - window_pad.x, ImGui::GetCursorScreenPos().y - window_pad.y };
 
 	// Start pos is the position of the top left corner
 	ImVec2 start_pos = { cursor_pos.x + window_pad.x, cursor_pos.y + window_pad.y };
 
 	// End position is only important for calculating the max avail contents
-	ImVec2 end_pos = { start_pos.x + window_size.x - window_pad.x, start_pos.y + window_size.y - window_pad.y };
+	ImVec2 end_pos = { start_pos.x + window_size.x - window_pad.x - scrollbar_size_x, start_pos.y + window_size.y - window_pad.y };
 
 	// The maximum available space we can use to render characters
 	m_max_avail_content = { end_pos.x - start_pos.x, end_pos.y - start_pos.y };
