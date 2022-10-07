@@ -1,8 +1,8 @@
 /*
  *       Copyright (c) 2022, oxiKKK
  *
- *   This program is licensed under the MIT license. By downloading, copying,
- *    installing or using this software you agree to this license.
+ *   This program is licensed under the MIT license. By downloading, copying, or
+ *    modifying, installing or using this software you agree to this license.
  *
  *       License Agreement
  *
@@ -24,32 +24,22 @@
  *    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  *    IN THE SOFTWARE.
 */
-#ifndef BRATR_VERSIONING_H
-#define BRATR_VERSIONING_H
+#ifndef BRATR_C_PLATFORM_H
+#define BRATR_C_PLATFORM_H
 
 #pragma once
 
-// Versioning of the BRATR program is based on Semantic Versioning 
-// which can be found here:
-//	https://semver.org
-//
-// In summary:
-// -	The major version represend a big update, i.e. API changes or
-//		 code architecture changes that are incompatible with the last
-//		 version of the program.
-// -	The minor version is versioning between major updates. Incre-
-//		 ment this whether we're doing some changes to the program.
-// -	The patch is for bugfixes in minor/major program releases.
+// A convient way of implementing platform-specific code compatible on different OSs.
+class CPlatformBase
+{
+public:
+	virtual void get_desktop_resolution(int32_t& width, int32_t& height) = 0;
+};
 
-#define BRATR_V_MAJOR_S "0"
-#define BRATR_V_MINOR_S "1"
-#define BRATR_V_PATCH_S "2"
-
-#define BRATR_V_MAJOR   0
-#define BRATR_V_MINOR   1
-#define BRATR_V_PATCH   2
-
-// Adds everything up in a syntax: major.minor.patch
-#define BRATR_VERSION BRATR_V_MAJOR_S "." BRATR_V_MINOR_S "." BRATR_V_PATCH_S
+class CPlatform final : public CPlatformBase
+{
+public:
+	void get_desktop_resolution(int32_t& width, int32_t& height) override;
+};
 
 #endif

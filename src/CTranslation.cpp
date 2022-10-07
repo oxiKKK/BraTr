@@ -46,6 +46,7 @@ std::array<translation_t, TRED_COUNT> CTranslation::m_translated_quotes =
 		{ TRED_ERR_CHARACTER_WITHOUT_TRANSLATION, "This character doesn't have translation support", u8"Toto písmeno ještě nemá podporovaný překlad v braillově písmu" },
 		{ TRED_ERR_PREVIOUS_INPUT_FILE_NOT_FOUND, "Couldn't locate previously saved file. Please, open new file.", u8"Nepodařilo se najít napoředy uložený soubor. Prosím, otevřete nový." },
 		{ TRED_ERR_COULDNT_OPEN_FILE, "Couldn't open file", u8"Nepodařilo se otevřít soubor" },
+		{ TRED_ERR_DESKTOP_RESOLUTION, "Couldn't get desktop resolution", u8"Nepodařilo se zíkat rozlišení plochy" },
 
 		// Miscellaneous
 

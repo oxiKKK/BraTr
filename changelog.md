@@ -1,3 +1,7 @@
+# v0.1.2
+## Source code
+- 
+
 # v0.1.1
 ## Source code
 - Added missing glfw.lib file.
