@@ -4,12 +4,6 @@
     <Filter Include="src">
       <UniqueIdentifier>{b9df7aad-f430-49a3-82ec-e6401eac4887}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Management">
-      <UniqueIdentifier>{7036b61a-3ff0-426b-a5a0-b1c715e82123}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Management\Translation">
-      <UniqueIdentifier>{953c2fd5-fd7b-40eb-9b5f-0b6002910de2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="external">
       <UniqueIdentifier>{37270759-b6fe-4fc7-98b8-0df7a6fe0eec}</UniqueIdentifier>
     </Filter>
@@ -25,17 +19,23 @@
     <Filter Include="external\soil">
       <UniqueIdentifier>{0c7fafbd-f706-401e-b9f4-d51eb8f92c00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Braille">
-      <UniqueIdentifier>{05c9c343-e6c6-49bb-abfb-938bcd8b9e99}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\GUI">
       <UniqueIdentifier>{0a213e5b-515c-4d93-84cf-6aaa873a6cc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Assets">
-      <UniqueIdentifier>{1c81a5d3-cea0-4294-8e57-291abe29b725}</UniqueIdentifier>
-    </Filter>
     <Filter Include="misc">
       <UniqueIdentifier>{44877963-5d2f-4ef3-8944-3a75bf1b64d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\assets">
+      <UniqueIdentifier>{1c81a5d3-cea0-4294-8e57-291abe29b725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\braille">
+      <UniqueIdentifier>{05c9c343-e6c6-49bb-abfb-938bcd8b9e99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\management">
+      <UniqueIdentifier>{7036b61a-3ff0-426b-a5a0-b1c715e82123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\management\translation">
+      <UniqueIdentifier>{953c2fd5-fd7b-40eb-9b5f-0b6002910de2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,10 +46,10 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="CConsole.cpp">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClCompile>
     <ClCompile Include="CTranslation.cpp">
-      <Filter>src\Management\Translation</Filter>
+      <Filter>src\management\translation</Filter>
     </ClCompile>
     <ClCompile Include="..\external\imgui\backends\imgui_impl_glfw.cpp">
       <Filter>external\imgui\backends</Filter>
@@ -73,10 +73,10 @@
       <Filter>external\imgui</Filter>
     </ClCompile>
     <ClCompile Include="CSettings.cpp">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClCompile>
     <ClCompile Include="CUtils.cpp">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClCompile>
     <ClCompile Include="..\external\soil\src\image_dxt.c">
       <Filter>external\soil</Filter>
@@ -92,7 +92,7 @@
     </ClCompile>
     <ClCompile Include="bratr_pch.cpp" />
     <ClCompile Include="CBrailleParser.cpp">
-      <Filter>src\Braille</Filter>
+      <Filter>src\braille</Filter>
     </ClCompile>
     <ClCompile Include="CGUI.cpp">
       <Filter>src\GUI</Filter>
@@ -101,25 +101,25 @@
       <Filter>src\GUI</Filter>
     </ClCompile>
     <ClCompile Include="CFileSystem.cpp">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClCompile>
     <ClCompile Include="BrailleCharacterAtlas.cpp">
-      <Filter>src\Braille</Filter>
+      <Filter>src\braille</Filter>
     </ClCompile>
     <ClCompile Include="CBrailleRenderer.cpp">
-      <Filter>src\Braille</Filter>
+      <Filter>src\braille</Filter>
     </ClCompile>
     <ClCompile Include="CEventListener.cpp">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClCompile>
     <ClCompile Include="CDialogManager.cpp">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClCompile>
     <ClCompile Include="assets\arial_binary_compressed.cpp">
-      <Filter>src\Assets</Filter>
+      <Filter>src\assets</Filter>
     </ClCompile>
     <ClCompile Include="assets\ico_png_file_binary_data.cpp">
-      <Filter>src\Assets</Filter>
+      <Filter>src\assets</Filter>
     </ClCompile>
     <ClCompile Include="CPlatform.cpp">
       <Filter>src</Filter>
@@ -130,13 +130,13 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="CConsole.h">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClInclude>
     <ClInclude Include="CTranslation.h">
-      <Filter>src\Management\Translation</Filter>
+      <Filter>src\management\translation</Filter>
     </ClInclude>
     <ClInclude Include="TranslationStrings.h">
-      <Filter>src\Management\Translation</Filter>
+      <Filter>src\management\translation</Filter>
     </ClInclude>
     <ClInclude Include="..\external\imgui\backends\imgui_impl_glfw.h">
       <Filter>external\imgui\backends</Filter>
@@ -160,10 +160,10 @@
       <Filter>external\imgui</Filter>
     </ClInclude>
     <ClInclude Include="CSettings.h">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClInclude>
     <ClInclude Include="CUtils.h">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClInclude>
     <ClInclude Include="..\external\portable-file-dialogs\portable-file-dialogs.h">
       <Filter>external\portable-file-dialogs</Filter>
@@ -188,7 +188,7 @@
     </ClInclude>
     <ClInclude Include="bratr_pch.h" />
     <ClInclude Include="CBrailleParser.h">
-      <Filter>src\Braille</Filter>
+      <Filter>src\braille</Filter>
     </ClInclude>
     <ClInclude Include="CGUI.h">
       <Filter>src\GUI</Filter>
@@ -197,19 +197,19 @@
       <Filter>src\GUI</Filter>
     </ClInclude>
     <ClInclude Include="CFileSystem.h">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClInclude>
     <ClInclude Include="BrailleCharacterAtlas.h">
-      <Filter>src\Braille</Filter>
+      <Filter>src\braille</Filter>
     </ClInclude>
     <ClInclude Include="CBrailleRenderer.h">
-      <Filter>src\Braille</Filter>
+      <Filter>src\braille</Filter>
     </ClInclude>
     <ClInclude Include="CEventListener.h">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClInclude>
     <ClInclude Include="CDialogManager.h">
-      <Filter>src\Management</Filter>
+      <Filter>src\management</Filter>
     </ClInclude>
     <ClInclude Include="Versioning.h">
       <Filter>src</Filter>
