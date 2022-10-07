@@ -40,7 +40,7 @@ class CTranslation
 {
 public:
 	template <uint32_t N> requires (N >= 0 && N < TRED_COUNT)
-	static inline const char* Get()
+	static inline const char* get()
 	{
 		switch (CSettings::get().m_language)
 		{
