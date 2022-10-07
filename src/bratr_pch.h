@@ -91,6 +91,7 @@ enum ELanguage
 #include "CFileSystem.h"
 #include "CBrailleRenderer.h"
 #include "CEventListener.h"
+#include "CPlatform.h"
 #include "CApplication.h"
 
 // Compressed fonts

@@ -121,6 +121,9 @@
     <ClCompile Include="assets\ico_png_file_binary_data.cpp">
       <Filter>src\Assets</Filter>
     </ClCompile>
+    <ClCompile Include="CPlatform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h">
@@ -209,6 +212,9 @@
       <Filter>src\Management</Filter>
     </ClInclude>
     <ClInclude Include="Versioning.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlatform.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

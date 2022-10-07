@@ -33,3 +33,4 @@ The program was tested on Windows 10 and was compiled inside Visual Studio 2019.
 - :x: Add some context menu, where the user could select font from the Windows\\Fonts directory and the program would automatically load N same fonts of different sizes.
 - :x: Make the program x64-compatible. At this point, we can only compile in x86 mode.
 - :heavy_check_mark: Make it possible to select previous loaded files from the context menu.
+- :heavy_check_mark: Add more customization to the braille letter renderer (e.g. add options for things such as dot invards shift, dot size, strip colors, dot translucence, etc.)

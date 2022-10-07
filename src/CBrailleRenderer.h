@@ -104,10 +104,10 @@ private:
 	bool approved_prefix(EBraillePrefix prefix);
 
 	float get_letter_size() const { return CGUIFontManager::get().get_active_font()->FontSize; }
-	float get_braille_dot_size() const { return CGUIFontManager::get().get_active_font()->FontSize / 12.f; }
+	float get_braille_dot_size() const { return CGUIFontManager::get().get_active_font()->FontSize / StyleConstants::k_dot_size_divider; }
 
 	// How much is the dot shifted invards when rendered
-	float get_braille_dot_invards_shift_mul() const { return CGUIFontManager::get().get_active_font()->FontSize / 15.f; }
+	float get_braille_dot_invards_shift_mul() const { return CGUIFontManager::get().get_active_font()->FontSize / StyleConstants::k_dot_invards_shift_divider; }
 
 	float get_num_of_chars_per_line() const { return m_max_avail_content.x / (get_letter_size() + StyleConstants::k_letter_spacing_x); }
 
@@ -118,6 +118,9 @@ public:
 	public:
 		static inline constexpr float k_letter_spacing_x = 0.f;
 		static inline constexpr float k_letter_spacing_y = 2.f;
+
+		static inline constexpr float k_dot_size_divider = 12.f;
+		static inline constexpr float k_dot_invards_shift_divider = 13.f;
 	};
 
 private:

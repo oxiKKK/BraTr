@@ -214,6 +214,7 @@
     <ClCompile Include="CGUI.cpp" />
     <ClCompile Include="CGUIFontManager.cpp" />
     <ClCompile Include="CBrailleParser.cpp" />
+    <ClCompile Include="CPlatform.cpp" />
     <ClCompile Include="CSettings.cpp" />
     <ClCompile Include="CTranslation.cpp" />
     <ClCompile Include="CUtils.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="CGUI.h" />
     <ClInclude Include="CGUIFontManager.h" />
     <ClInclude Include="CBrailleParser.h" />
+    <ClInclude Include="CPlatform.h" />
     <ClInclude Include="CSettings.h" />
     <ClInclude Include="CTranslation.h" />
     <ClInclude Include="CUtils.h" />
