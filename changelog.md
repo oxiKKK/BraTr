@@ -4,3 +4,6 @@
 - Added "misc" folder to the solution tree.
 
 ## App
+
+## Bugfixes
+- Fixed bug when where there weren't any previously opened files saved, the program would crash.

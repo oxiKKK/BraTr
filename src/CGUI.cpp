@@ -197,9 +197,11 @@ void CGUI::render_menu_bar()
 
 		for (uint32_t i = 0; i < prev_opened.size(); i++)
 		{
-			if (ImGui::Selectable(prev_opened[i].c_str()))
+			const auto& file = prev_opened[i];
+
+			if (ImGui::Selectable(file.c_str()))
 			{
-				try_to_open_input_file(prev_opened[i]);
+				try_to_open_input_file(file);
 			}
 		}
 

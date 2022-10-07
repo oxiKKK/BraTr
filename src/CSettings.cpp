@@ -60,10 +60,15 @@ void CSettings::load_settings()
 	m_font_size = static_cast<ESettingsFont>(read_value(k_settings_section_name, "font_size"));
 	m_language = static_cast<ELanguage>(read_value(k_settings_section_name, "language"));
 
-	m_previously_opened_files.resize(k_previously_opened_files_n);
-
 	for (uint32_t i = 0; i < k_previously_opened_files_n; i++)
-		m_previously_opened_files[i] = read_string(k_settings_section_name, std::format("previously_opened_files{}", i));
+	{
+		const auto& file = read_string(k_settings_section_name, std::format("previously_opened_files{}", i));
+
+		if (file.empty())
+			continue; // Haven't saved any last time
+
+		m_previously_opened_files.push_back(file);
+	}
 
 	CConsole::get().output_info("Loaded settings!");
 
