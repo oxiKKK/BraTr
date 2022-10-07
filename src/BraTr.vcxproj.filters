@@ -22,9 +22,6 @@
     <Filter Include="external\portable-file-dialogs">
       <UniqueIdentifier>{0717a0df-ef40-489c-9fc9-ad0b6b5b4330}</UniqueIdentifier>
     </Filter>
-    <Filter Include="assets">
-      <UniqueIdentifier>{137fd4a0-eb7f-4deb-9587-4f340ccf2447}</UniqueIdentifier>
-    </Filter>
     <Filter Include="external\soil">
       <UniqueIdentifier>{0c7fafbd-f706-401e-b9f4-d51eb8f92c00}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,9 @@
     </Filter>
     <Filter Include="src\Assets">
       <UniqueIdentifier>{1c81a5d3-cea0-4294-8e57-291abe29b725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="misc">
+      <UniqueIdentifier>{44877963-5d2f-4ef3-8944-3a75bf1b64d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +165,6 @@
     <ClInclude Include="..\external\portable-file-dialogs\portable-file-dialogs.h">
       <Filter>external\portable-file-dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\assets\resource.h">
-      <Filter>assets</Filter>
-    </ClInclude>
     <ClInclude Include="..\external\soil\include\SOIL\image_dxt.h">
       <Filter>external\soil</Filter>
     </ClInclude>
@@ -216,34 +213,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\assets\BraTr.aps">
-      <Filter>assets</Filter>
+    <None Include="..\changelog.md">
+      <Filter>misc</Filter>
     </None>
-    <None Include="..\assets\bratr_ico64.psd">
-      <Filter>assets</Filter>
+    <None Include="..\README.md">
+      <Filter>misc</Filter>
     </None>
-    <None Include="..\assets\bratr_ico128.psd">
-      <Filter>assets</Filter>
-    </None>
-    <None Include="..\assets\bratr_ico256.psd">
-      <Filter>assets</Filter>
-    </None>
-    <None Include="..\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\assets\BraTr.rc">
-      <Filter>assets</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\assets\bratr_ico64.ico">
-      <Filter>assets</Filter>
-    </Image>
-    <Image Include="..\assets\bratr_ico128.ico">
-      <Filter>assets</Filter>
-    </Image>
-    <Image Include="..\assets\bratr_ico256.ico">
-      <Filter>assets</Filter>
-    </Image>
   </ItemGroup>
 </Project>
