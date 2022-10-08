@@ -32,7 +32,7 @@
 class CUtils
 {
 public:
-	static bool is_rect_hovered(const ImVec2& rect, const float size);
+	static bool is_rect_hovered(const ImVec2& rect, const ImVec2& size);
 
 	static bool is_newline(const char c);
 	static bool is_valid_ascii(const char c);

@@ -26,10 +26,10 @@
 */
 #include "bratr_pch.h"
 
-bool CUtils::is_rect_hovered(const ImVec2& rect, const float size)
+bool CUtils::is_rect_hovered(const ImVec2& rect, const ImVec2& size)
 {
-	return (ImGui::GetMousePos().x > rect.x && ImGui::GetMousePos().x < rect.x + size) &&
-		(ImGui::GetMousePos().y > rect.y && ImGui::GetMousePos().y < rect.y + size);
+	return (ImGui::GetMousePos().x > rect.x && ImGui::GetMousePos().x < rect.x + size.x) &&
+		(ImGui::GetMousePos().y > rect.y && ImGui::GetMousePos().y < rect.y + size.y);
 }
 
 bool CUtils::is_newline(const char c)

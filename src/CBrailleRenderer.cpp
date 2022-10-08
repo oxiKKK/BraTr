@@ -26,6 +26,21 @@
 */
 #include "bratr_pch.h"
 
+/*********************************************************************************
+* Style Constants
+*/
+
+float CBrailleRenderer::StyleConstants::k_letter_spacing_x = 0.f;
+float CBrailleRenderer::StyleConstants::k_letter_spacing_y = 2.f;
+
+float CBrailleRenderer::StyleConstants::k_dot_size_modifier = 1.f / 12.f;
+float CBrailleRenderer::StyleConstants::k_dot_invards_shift_modifier = 3.f;
+
+float CBrailleRenderer::StyleConstants::k_letter_ratio_x = 4.f;
+float CBrailleRenderer::StyleConstants::k_letter_ratio_y = 2.5f;
+
+/*********************************************************************************/
+
 void CBrailleRenderer::render_side_region(bool regular_characters)
 {
 	render_strips();
@@ -77,9 +92,11 @@ void CBrailleRenderer::render_strips()
 	auto& style = ImGui::GetStyle();
 	const auto window_pad = style.WindowPadding;
 
+	const auto letter_size = get_letter_size();
+
 	ImVec2 cursor_pos = { ImGui::GetCursorScreenPos().x - window_pad.x, ImGui::GetCursorScreenPos().y - window_pad.y };
 
-	const float letter_size_with_spacing = get_letter_size() + StyleConstants::k_letter_spacing_y;
+	const float letter_size_with_spacing = letter_size.y + StyleConstants::k_letter_spacing_y;
 
 	uint32_t n_strip = 0;
 	for (float off = 0.f;
@@ -100,8 +117,8 @@ void CBrailleRenderer::render_strips()
 
 		drawlist->AddQuadFilled({ cur_pos.x, cur_pos.y },
 								{ cur_pos.x + total_size.x - window_pad.x * 2.f, cur_pos.y },
-								{ cur_pos.x + total_size.x - window_pad.x * 2.f, cur_pos.y + get_letter_size() },
-								{ cur_pos.x, cur_pos.y + get_letter_size() },
+								{ cur_pos.x + total_size.x - window_pad.x * 2.f, cur_pos.y + letter_size.y },
+								{ cur_pos.x, cur_pos.y + letter_size.y },
 								color);
 
 		n_strip++;
@@ -116,6 +133,8 @@ void CBrailleRenderer::render_characters(bool regular_characters)
 
 	auto& style = ImGui::GetStyle();
 	const auto window_pad = style.WindowPadding;
+
+	const ImVec2 letter_size = get_letter_size();
 
 	// Apply scrollbar size however, only if it's present.
 	float scrollbar_size_x = style.ScrollbarSize;
@@ -164,23 +183,30 @@ void CBrailleRenderer::render_characters(bool regular_characters)
 			{
 				ImVec2 char_center =
 				{
-					cur_pos.x + get_letter_size() / 2.f,
-					cur_pos.y + get_letter_size() / 2.f
+					cur_pos.x + letter_size.x / 2.f,
+					cur_pos.y + letter_size.y / 2.f
 				};
 
 				// If it's a prefix character, render a dot representing it
 				if (cur_char.m_unicode_character == '-')
 				{
-#if 0
-					const float dot_radius = get_letter_size() / 10.f;
-					RenderDot(CharacterCenter, dot_radius);
-#else
-					const float rect_size = get_letter_size() / 10.f;
+					const float rect_size = get_braille_dot_size();
 					render_rotated_triangle(char_center, rect_size);
-#endif
 				}
 				else
-					render_regular_char(cur_pos, cur_char);
+				{
+					float imgui_font_size = CGUIFontManager::get().get_active_font()->FontSize;
+
+					// We have to also take in count the ratio of a letter size in
+					// order to position the character to the center.
+					ImVec2 char_ratio_off_pos =
+					{
+						cur_pos.x + letter_size.x / 2.f - imgui_font_size / 2.f,
+						cur_pos.y + letter_size.y / 2.f - imgui_font_size / 2.f
+					};
+
+					render_regular_char(char_ratio_off_pos, cur_char);
+				}
 			}
 			else
 				render_braille_char(cur_pos, cur_char);
@@ -191,7 +217,7 @@ void CBrailleRenderer::render_characters(bool regular_characters)
 		}
 
 		// Mouse movement
-		if (CUtils::is_rect_hovered(cur_pos, get_letter_size()))
+		if (CUtils::is_rect_hovered(cur_pos, letter_size))
 		{
 			if (CEventListener::get().is_mouse_button_pressed(ImGuiMouseButton_Left))
 			{
@@ -236,7 +262,7 @@ void CBrailleRenderer::render_characters(bool regular_characters)
 	m_settingcared_num_of_chars = n_settingcared_idx;
 
 	// The maximum available contents for scrolling + one extra line as a reserve.
-	m_max_avail_content_scroll_y = relative_pos.y + (get_letter_size() * StyleConstants::k_letter_spacing_y);
+	m_max_avail_content_scroll_y = relative_pos.y + (letter_size.y * StyleConstants::k_letter_spacing_y);
 
 	ImGui::SetCursorPosY(m_max_avail_content_scroll_y);
 
@@ -264,7 +290,7 @@ void CBrailleRenderer::render_braille_char(const ImVec2& pos, const Character& c
 {
 	const auto drawlist = ImGui::GetWindowDrawList();
 
-	const float letter_size = get_letter_size();
+	const ImVec2 letter_size = get_letter_size();
 
 	// Circle radius
 	const float dot_size = get_braille_dot_size();
@@ -273,7 +299,7 @@ void CBrailleRenderer::render_braille_char(const ImVec2& pos, const Character& c
 	const float dot_invards_shift_mul = get_braille_dot_invards_shift_mul();
 
 	// How are the dots spaced out of each other
-	const ImVec2 dot_spacing = { letter_size, letter_size / 2.f };
+	const ImVec2 dot_spacing = { letter_size.x, letter_size.y / 2.f };
 
 	// Bits which indicate which dots will be rendered
 	uint8_t render_braille_bits = character.has_prefix() ? character.m_braille_prefix_bits : character.m_braille_bits;
@@ -297,7 +323,7 @@ void CBrailleRenderer::render_braille_char(const ImVec2& pos, const Character& c
 		bool render_circle = render_braille_bits & (1 << bit);
 
 		circle_center = {
-			pos.x + off.x + bit_offsets[bit].x * dot_invards_shift_mul,
+			pos.x + off.x + bit_offsets[bit].x * dot_invards_shift_mul, 
 			pos.y + off.y + bit_offsets[bit].y * dot_invards_shift_mul
 		};
 
@@ -305,7 +331,7 @@ void CBrailleRenderer::render_braille_char(const ImVec2& pos, const Character& c
 		if (render_circle)
 			drawlist->AddCircleFilled(circle_center, dot_size, ImColor(255, 255, 255, 255));
 
-		if (bit & 1)
+		if (bit & 1) // every second dot
 		{
 			off.y += dot_spacing.y;
 			off.x = 0.f;
@@ -344,11 +370,13 @@ void CBrailleRenderer::render_invalid_char_marker(const ImVec2& char_pos)
 {
 	const auto drawlist = ImGui::GetWindowDrawList();
 
+	const auto letter_size = get_letter_size();
+
 	const float pad = 7.f;
 	ImColor disabled_clr = ImColor(255, 255, 255, 75);
 
 	drawlist->AddRect({ char_pos.x + pad, char_pos.y + pad },
-					   { char_pos.x + get_letter_size() - pad, char_pos.y + get_letter_size() - pad },
+					   { char_pos.x + letter_size.x - pad, char_pos.y + letter_size.y - pad },
 					  disabled_clr,
 					   2.f);
 
@@ -357,8 +385,8 @@ void CBrailleRenderer::render_invalid_char_marker(const ImVec2& char_pos)
 
 	CGUIFontManager::get().render_text_ex(
 		{
-			char_pos.x + get_letter_size() / 2.f - label_sz.x / 2.f,
-			char_pos.y + get_letter_size() / 2.f - label_sz.y / 2.f,
+			char_pos.x + letter_size.x / 2.f - label_sz.x / 2.f,
+			char_pos.y + letter_size.y / 2.f - label_sz.y / 2.f,
 		},
 		disabled_clr,
 		CGUIFontManager::get().get_font("Default"),
@@ -399,24 +427,28 @@ void CBrailleRenderer::render_letter_selection_rect(const ImVec2& pos, const ImC
 {
 	auto drawlist = ImGui::GetWindowDrawList();
 
+	const auto letter_size = get_letter_size();
+
 	if (is_filled)
 	{
 		ImGui::GetWindowDrawList()->AddRectFilled({ pos.x, pos.y },
-												  { pos.x + get_letter_size(), pos.y + get_letter_size() },
+												  { pos.x + letter_size.x, pos.y + letter_size.y },
 												  clr, 4.f);
 	}
 	else
 	{
 		ImGui::GetWindowDrawList()->AddRect({ pos.x, pos.y },
-											{ pos.x + get_letter_size(), pos.y + get_letter_size() },
+											{ pos.x + letter_size.x, pos.y + letter_size.y },
 											clr, 4.f);
 	}
 }
 
 void CBrailleRenderer::increment_chraracter_pos(ImVec2& relative_pos)
 {
-	float spacing_x = get_letter_size() + StyleConstants::k_letter_spacing_x;
-	float spacing_y = get_letter_size() + StyleConstants::k_letter_spacing_y;
+	const auto letter_size = get_letter_size();
+
+	float spacing_x = letter_size.x + StyleConstants::k_letter_spacing_x;
+	float spacing_y = letter_size.y + StyleConstants::k_letter_spacing_y;
 
 	relative_pos.x += spacing_x;
 

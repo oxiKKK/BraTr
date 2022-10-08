@@ -103,24 +103,48 @@ private:
 
 	bool approved_prefix(EBraillePrefix prefix);
 
-	float get_letter_size() const { return CGUIFontManager::get().get_active_font()->FontSize; }
-	float get_braille_dot_size() const { return CGUIFontManager::get().get_active_font()->FontSize / StyleConstants::k_dot_size_divider; }
+	// Returns normalized size in pixels based on the letter size.
+	float get_braille_dot_size() const 
+	{
+		auto letter_size = get_letter_size();
+
+		return std::sqrt(letter_size.x * letter_size.y) * StyleConstants::k_dot_size_modifier;
+	}
 
 	// How much is the dot shifted invards when rendered
-	float get_braille_dot_invards_shift_mul() const { return CGUIFontManager::get().get_active_font()->FontSize / StyleConstants::k_dot_invards_shift_divider; }
+	float get_braille_dot_invards_shift_mul() const 
+	{ 
+		return StyleConstants::k_dot_invards_shift_modifier;
+	}
 
-	float get_num_of_chars_per_line() const { return m_max_avail_content.x / (get_letter_size() + StyleConstants::k_letter_spacing_x); }
+	float get_num_of_chars_per_line() const 
+	{ 
+		return m_max_avail_content.x / (get_letter_size().x + StyleConstants::k_letter_spacing_x); 
+	}
+
+	ImVec2 get_letter_size() const 
+	{ 
+		float imgui_font_size = CGUIFontManager::get().get_active_font()->FontSize;
+
+		float ratio = StyleConstants::k_letter_ratio_x / StyleConstants::k_letter_ratio_y;
+
+		return { imgui_font_size, imgui_font_size * ratio };
+	}
 
 public:
-	// Class for holding style information about how are the braille elements rendered
+	// Class for holding style information about how are the braille elements rendered¨.
+	// See the cpp file for actual constants. (:
 	class StyleConstants
 	{
 	public:
-		static inline constexpr float k_letter_spacing_x = 0.f;
-		static inline constexpr float k_letter_spacing_y = 2.f;
+		static float k_letter_spacing_x;
+		static float k_letter_spacing_y;
 
-		static inline constexpr float k_dot_size_divider = 12.f;
-		static inline constexpr float k_dot_invards_shift_divider = 13.f;
+		static float k_dot_size_modifier;
+		static float k_dot_invards_shift_modifier;
+
+		static float k_letter_ratio_x;
+		static float k_letter_ratio_y;
 	};
 
 private:

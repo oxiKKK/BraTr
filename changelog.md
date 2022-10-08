@@ -5,6 +5,7 @@
 ## App
 - Got rid of the option to open previously opened file.
 - Fixed a bug where the invalid character marker wasn't rendering correctly.
+- Changed the ratio of letter rectangles to 3/4. This is customizable and can be changed to whatever ratio.
 
 # v0.1.1
 ## Source code
