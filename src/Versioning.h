@@ -43,11 +43,11 @@
 
 #define BRATR_V_MAJOR_S "0"
 #define BRATR_V_MINOR_S "1"
-#define BRATR_V_PATCH_S "4"
+#define BRATR_V_PATCH_S "5"
 
 #define BRATR_V_MAJOR   0
 #define BRATR_V_MINOR   1
-#define BRATR_V_PATCH   4
+#define BRATR_V_PATCH   5
 
 // Adds everything up in a syntax: major.minor.patch
 #define BRATR_VERSION BRATR_V_MAJOR_S "." BRATR_V_MINOR_S "." BRATR_V_PATCH_S

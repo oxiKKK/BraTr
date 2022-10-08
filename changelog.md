@@ -1,3 +1,8 @@
+# v0.1.5
+ ## Bugfixes
+- Fixed bug where upon closing the file opening dialog, the program would crash.
+
+
 # v0.1.4
 ## App
 - Tweaked the size of braille letter dots.

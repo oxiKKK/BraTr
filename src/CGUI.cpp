@@ -165,7 +165,8 @@ void CGUI::render_menu_bar()
 				{ "Text Files (.txt", "*.txt" },
 				pfd::opt::none);
 
-			try_to_open_input_file(Sel.result()[0]);
+			if (!Sel.result().empty())
+				try_to_open_input_file(Sel.result()[0]);
 		}
 
 		ImGui::BeginDisabled(m_input_filepath.empty());
