@@ -1,7 +1,8 @@
-# v0.1.2
-## Source code
-- 
+# v0.1.3
+## Bugfixes
+- Fixed bug where the program icon didn't work.
 
+# v0.1.2
 ## App
 - Got rid of the option to open previously opened file.
 - Fixed a bug where the invalid character marker wasn't rendering correctly.

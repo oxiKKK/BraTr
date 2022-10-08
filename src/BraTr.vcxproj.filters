@@ -37,6 +37,9 @@
     <Filter Include="src\management\translation">
       <UniqueIdentifier>{953c2fd5-fd7b-40eb-9b5f-0b6002910de2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{694644f5-9e90-4dff-936d-53e8139c4698}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -217,6 +220,9 @@
     <ClInclude Include="CPlatform.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\assets\resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\changelog.md">
@@ -225,5 +231,13 @@
     <None Include="..\README.md">
       <Filter>misc</Filter>
     </None>
+    <None Include="..\assets\BraTr.aps">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\assets\BraTr.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

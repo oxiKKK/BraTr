@@ -235,6 +235,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\assets\resource.h" />
     <ClInclude Include="..\external\imgui\backends\imgui_impl_glfw.h" />
     <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl2.h" />
     <ClInclude Include="..\external\imgui\imgui.h" />
@@ -268,8 +269,12 @@
     <ClInclude Include="Versioning.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\assets\BraTr.aps" />
     <None Include="..\changelog.md" />
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\assets\BraTr.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
