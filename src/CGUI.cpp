@@ -105,6 +105,16 @@ void CGUI::run_frame(uint32_t app_width, uint32_t app_height)
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }
 
+void CGUI::clear_input_file()
+{
+	if (!m_input_filepath.empty())
+	{
+		CConsole::get().output_info(std::format("Closing input file: {}", m_input_filepath.string()));
+
+		m_input_filepath.clear();
+	}
+}
+
 void CGUI::render_contents()
 {
 	// Get the dims affected by resizing and such
@@ -173,7 +183,7 @@ void CGUI::render_menu_bar()
 
 		if (ImGui::MenuItem(CTranslation::get<TRED_GUI_CLOSE>()))
 		{
-			m_input_filepath = "";
+			clear_input_file();
 		}
 
 		ImGui::EndDisabled();
@@ -353,16 +363,28 @@ void CGUI::imgui_set_style()
 
 void CGUI::try_to_open_input_file(const std::filesystem::path& filepath)
 {
+	// Add the file to the remember queue
+	auto& prev_opened_files = CSettings::get().m_previously_opened_files;
+
 	// Found the file
-	if (filepath.empty())
+	if (filepath.empty() || !std::filesystem::exists(filepath))
 	{
 		CDialogManager::get().display_error(std::format("{} ({})", CTranslation::get<TRED_ERR_COULDNT_OPEN_FILE>(), filepath.string()));
 
+		clear_input_file();
+
+		for (auto iter = prev_opened_files.begin(); iter != prev_opened_files.end(); iter++)
+		{
+			// Remove this file from the previously opened file list.
+			if (filepath.string() == *iter)
+			{
+				prev_opened_files.erase(iter);
+				break;
+			}
+		}
+
 		return;
 	}
-
-	// Add the file to the remember queue
-	auto& prev_opened_files = CSettings::get().m_previously_opened_files;
 
 	if (prev_opened_files.size() > CSettings::get().k_previously_opened_files_n)
 		prev_opened_files.pop_front();

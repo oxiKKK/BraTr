@@ -50,10 +50,7 @@ public:
 		return m_input_filepath;
 	}
 
-	inline void clear_input_file()
-	{
-		m_input_filepath.clear();
-	}
+	void clear_input_file();
 
 private:
 	// Renders the contents of gui

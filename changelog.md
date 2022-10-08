@@ -1,7 +1,8 @@
 # v0.1.5
  ## Bugfixes
 - Fixed bug where upon closing the file opening dialog, the program would crash.
-
+- Fixed bugs with reading non-existing files (e.g. files that were opened and then renamed/removed)
+- Fixed crash upon opening non-existent previously opened file.
 
 # v0.1.4
 ## App

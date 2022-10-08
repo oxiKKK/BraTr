@@ -79,7 +79,7 @@ public:
 
 private:
 	bool reload_file_contents();
-	bool read_file_contents(const std::filesystem::path& filepath);
+	void read_file_contents(const std::filesystem::path& filepath);
 
 	void process_characters();
 

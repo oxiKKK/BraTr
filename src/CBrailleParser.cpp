@@ -51,8 +51,7 @@ bool CBrailleParser::reload_file_contents()
 	if (!input_filepath.empty())
 	{
 		// Update the file contents
-		if (!read_file_contents(input_filepath))
-			return false;
+		read_file_contents(input_filepath);
 
 		// Now take the file contents and process individual character
 		process_characters();
@@ -65,17 +64,22 @@ bool CBrailleParser::reload_file_contents()
 	return true;
 }
 
-bool CBrailleParser::read_file_contents(const std::filesystem::path& filepath)
+void CBrailleParser::read_file_contents(const std::filesystem::path& filepath)
 {
 	std::wifstream wifs(filepath, std::ios_base::in);
 
 	// Clear the buffer first before another read operation.
 	m_file_buffer.clear();
 
+	// if the file's bad, just don't read it. This scenario can happen when user
+	// opens some file and then renames or removes the original file on the disk.
+	// Or also when the user opens a file from the previously opened files list
+	// that no longer exists.
 	if (!wifs.good())
 	{
-		CDialogManager::get().display_fatal_error(std::format("{} ({})", CTranslation::get<TRED_ERR_COULDNT_READ_FILE>(), filepath.string()));
-		return false;
+		CConsole::get().output_error(std::format("Couldn't read from a file: {}", filepath.string()));
+		CGUI::get().clear_input_file();
+		return;
 	}
 
 	wifs.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
@@ -86,8 +90,6 @@ bool CBrailleParser::read_file_contents(const std::filesystem::path& filepath)
 	m_file_buffer = wss.str();
 
 	wifs.close();
-
-	return true;
 }
 
 void CBrailleParser::process_characters()
