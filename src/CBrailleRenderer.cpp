@@ -37,7 +37,7 @@ float CBrailleRenderer::StyleConstants::k_dot_size_modifier = 1.f / 12.f;
 float CBrailleRenderer::StyleConstants::k_dot_invards_shift_modifier = 3.f;
 
 float CBrailleRenderer::StyleConstants::k_letter_ratio_x = 4.f;
-float CBrailleRenderer::StyleConstants::k_letter_ratio_y = 2.5f;
+float CBrailleRenderer::StyleConstants::k_letter_ratio_y = 3.f;
 
 /*********************************************************************************/
 
