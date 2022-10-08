@@ -1,3 +1,7 @@
+# v0.1.4
+## App
+- Tweaked the size of braille letter dots.
+
 # v0.1.3
 ## Bugfixes
 - Fixed bug where the program icon didn't work.

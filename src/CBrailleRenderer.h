@@ -108,7 +108,7 @@ private:
 	{
 		auto letter_size = get_letter_size();
 
-		return std::sqrt(letter_size.x * letter_size.y) * StyleConstants::k_dot_size_modifier;
+		return std::sqrt(letter_size.x * letter_size.y) / StyleConstants::k_dot_size_modifier;
 	}
 
 	// How much is the dot shifted invards when rendered
